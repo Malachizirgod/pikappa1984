@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Memoriam | Pi Kappa Chapter | In Memoriam – Pi Kappa Chapter</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --black: #000000;
+    --charcoal: #111111;
+    --dark: #1A1A1A;
+    --white: #FFFFFF;
+    --sand: #DAD3CC;
+    --gray: #666666;
+    --border: rgba(184,134,11,0.25);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* HEADER */
+  .mem-header {
+    text-align: center;
+    padding: clamp(36px, 7vw, 64px) clamp(16px, 4vw, 48px) clamp(28px, 5vw, 48px);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mem-header::before {
+    content: 'Ω';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(140px, 35vw, 320px);
+    font-weight: 700;
+    color: rgba(184,134,11,0.03);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .mem-eyebrow {
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .mem-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 9vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+
+  .mem-title em { color: var(--gold); font-style: italic; }
+
+  .mem-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 14px auto;
+  }
+
+  .mem-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3.5vw, 18px);
+    color: var(--sand);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+    padding: 0 8px;
+  }
+
+  /* CARDS CONTAINER */
+  .cards-container {
+    padding: clamp(20px, 4vw, 48px) clamp(12px, 3vw, 40px) clamp(32px, 6vw, 60px);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* MEMORIAL CARD */
+  .mem-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.3s;
+    animation: fadeIn 0.5s ease both;
+    width: 100%;
+  }
+
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(14px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .mem-card:nth-child(odd) { background: var(--black); }
+  .mem-card:nth-child(even) { background: var(--charcoal); }
+  .mem-card:hover { border-color: rgba(184,134,11,0.5); }
+
+  /* CARD HEADER */
+  .card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: clamp(10px, 2vw, 20px);
+    padding: clamp(14px, 3vw, 22px) clamp(14px, 3vw, 32px);
+    border-bottom: 1px solid var(--border);
+    background: rgba(184,134,11,0.04);
+  }
+
+  .omega-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 5vw, 30px);
+    color: var(--gold);
+    opacity: 0.55;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  .card-header-info { flex: 1; min-width: 160px; }
+
+  .bro-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 5vw, 26px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+  }
+
+  .bro-line-info {
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+
+  .bro-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(12px, 2.5vw, 15px);
+    color: var(--sand);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  /* CARD BODY */
+  .card-body {
+    display: grid;
+    grid-template-columns: clamp(140px, 22vw, 200px) 1fr;
+    gap: 0;
+  }
+
+  @media (max-width: 540px) {
+    .card-body { grid-template-columns: 1fr; }
+    .photo-area {
+      border-right: none !important;
+      border-bottom: 1px solid var(--border);
+      flex-direction: row !important;
+      justify-content: flex-start !important;
+      padding: clamp(14px, 3vw, 20px) !important;
+      gap: 16px !important;
+    }
+    .photo-placeholder { width: 90px !important; height: 110px !important; flex-shrink: 0; }
+    .brother-photo { width: 90px !important; height: 110px !important; }
+    .photo-caption { text-align: left !important; }
+    .bro-dates { width: 100%; }
+  }
+
+  /* PHOTO AREA */
+  .photo-area {
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: clamp(16px, 3vw, 28px) clamp(14px, 3vw, 24px);
+    gap: 10px;
+    background: rgba(0,0,0,0.25);
+  }
+
+  .photo-placeholder {
+    width: clamp(100px, 18vw, 140px);
+    height: clamp(120px, 22vw, 170px);
+    background: var(--dark);
+    border: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .photo-placeholder svg {
+    width: clamp(20px, 4vw, 28px);
+    height: clamp(20px, 4vw, 28px);
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    opacity: 0.45;
+  }
+
+  .photo-placeholder span {
+    font-size: clamp(8px, 1.8vw, 10px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .brother-photo {
+    width: clamp(100px, 18vw, 140px);
+    height: clamp(120px, 22vw, 170px);
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border: 1px solid var(--border);
+  }
+
+  .photo-caption {
+    font-size: clamp(9px, 1.8vw, 10px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* BIO AREA */
+  .bio-area {
+    padding: clamp(20px, 4vw, 32px) clamp(16px, 3.5vw, 36px);
+  }
+
+  .bio-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 3.5vw, 17px);
+    line-height: 1.85;
+    color: var(--sand);
+  }
+
+  .bio-text strong { color: var(--white); font-weight: 600; }
+
+  /* RIP STRIP */
+  .rip-strip {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 2vw, 16px);
+    padding: clamp(10px, 2vw, 13px) clamp(14px, 3vw, 32px);
+    border-top: 1px solid var(--border);
+    background: rgba(184,134,11,0.03);
+  }
+
+  .rip-line { flex:1; height:1px; background:var(--border); min-width:16px; }
+
+  .rip-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(11px, 2.5vw, 13px);
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* CLOSING */
+  .mem-closing {
+    text-align: center;
+    padding: clamp(32px, 6vw, 52px) clamp(16px, 4vw, 48px);
+    border-top: 1px solid var(--border);
+    background: var(--charcoal);
+  }
+
+  .mem-closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 4.5vw, 22px);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .mem-closing-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3.5vw, 16px);
+    color: var(--sand);
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .omega-final {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 8vw, 52px);
+    color: var(--gold);
+    opacity: 0.35;
+    margin-top: 14px;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+</style>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<div id="nav-inject"></div>
+<div style="height:76px"></div>
+
+
+<!-- HEADER -->
+<div class="mem-header">
+  <p class="mem-eyebrow">Pi Kappa Chapter &middot; Alpha Phi Alpha Fraternity, Inc.</p>
+  <h1 class="mem-title"><em>In</em> Memoriam</h1>
+  <div class="mem-divider"></div>
+  <p class="mem-subtitle">We honor the brothers of Pi Kappa Chapter who have crossed into the Omega Chapter. Their legacy lives on in every brother they inspired and every life they touched.</p>
+</div>
+
+<!-- CARDS -->
+<div class="cards-container">
+
+  <!-- CALVIN BRYANT -->
+  <div class="mem-card">
+    <div class="card-header">
+      <div class="omega-symbol">Ω</div>
+      <div class="card-header-info">
+        <div class="bro-name">Brother Calvin Leon Bryant</div>
+        <div class="bro-line-info">Spring 1986 &middot; Ujima Line &middot; No. 2 &middot; Pi Kappa Chapter</div>
+      </div>
+      <div class="bro-dates">January 26, 1964 &ndash; January 31, 2017</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-area">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-caption">Bro. Calvin Bryant<br>Spring 1986</div>
+      </div>
+      <div class="bio-area">
+        <p class="bio-text">
+          <strong>Calvin Leon Bryant</strong> was born on January 26th, 1964 in San Bernardino, California. He graduated from California State University, Northridge with a degree in Computer Science. He pledged as number two on the Spring 1986 Ujima line of Pi Kappa Chapter, Alpha Phi Alpha Fraternity, Inc. He served in his church as an evangelist, dedicating his life to faith and community leading up to his passing on January 31st, 2017.
+        </p>
+      </div>
+    </div>
+    <div class="rip-strip">
+      <div class="rip-line"></div>
+      <span class="rip-text">Entered the Omega Chapter &mdash; January 31, 2017</span>
+      <div class="rip-line"></div>
+    </div>
+  </div>
+
+  <!-- JIMMY HAMILTON -->
+  <div class="mem-card">
+    <div class="card-header">
+      <div class="omega-symbol">Ω</div>
+      <div class="card-header-info">
+        <div class="bro-name">Brother Jimmy Darnell Hamilton</div>
+        <div class="bro-line-info">Spring 1986 &middot; Ujima Line &middot; No. 5 &middot; Pi Kappa Chapter</div>
+      </div>
+      <div class="bro-dates">April 19, 1964 &ndash; October 2, 2023</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-area">
+        <img class="brother-photo" src="https://static.wixstatic.com/media/96e91e_a54ea8db7988430f933b7b2f47075ab3~mv2.jpg" alt="Brother Jimmy Hamilton">
+        <div class="photo-caption">Bro. Jimmy Hamilton<br>Spring 1986</div>
+      </div>
+      <div class="bio-area">
+        <p class="bio-text">
+          <strong>Jimmy Darnell Hamilton</strong> was born April 19th, 1964 in Los Angeles, California. He graduated from Morningside High School in Inglewood, California before attending California State University, Northridge. He pledged as number five on the Spring 1986 Ujima line of Pi Kappa Chapter.
+          <br><br>
+          Jimmy was a true pioneer in the art form of stepping, co-founding the groundbreaking group <strong>Step by Step</strong>, which appeared on <em>A Different World</em>, <em>The Fresh Prince of Bel Air</em>, and <em>The NAACP Image Awards</em>, and choreographed the movie <em>House Party 2</em>. He served as a digital marketer and playwright until his transition on October 2nd, 2023.
+        </p>
+      </div>
+    </div>
+    <div class="rip-strip">
+      <div class="rip-line"></div>
+      <span class="rip-text">Entered the Omega Chapter &mdash; October 2, 2023</span>
+      <div class="rip-line"></div>
+    </div>
+  </div>
+
+  <!-- HEATH ADAMS -->
+  <div class="mem-card">
+    <div class="card-header">
+      <div class="omega-symbol">Ω</div>
+      <div class="card-header-info">
+        <div class="bro-name">Brother Heath Adams</div>
+        <div class="bro-line-info">Fall 1986 &middot; Soulmates Line &middot; No. 7 &middot; Pi Kappa Chapter</div>
+      </div>
+      <div class="bro-dates">May 25, 1966 &ndash; [Date of Passing]</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-area">
+        <img class="brother-photo" src="https://static.wixstatic.com/media/96e91e_73408d243e6e4828aa4379bb054b8e28~mv2.jpg" alt="Brother Heath Adams">
+        <div class="photo-caption">Bro. Heath Adams<br>Fall 1986</div>
+      </div>
+      <div class="bio-area">
+        <p class="bio-text">
+          <strong>Heath Adams</strong> was born May 25, 1966 in Culver City, California. He was initiated into Alpha Phi Alpha Fraternity, Inc. on November 29, 1986 through the Pi Kappa Chapter as the number seven on the Soulmates line.
+          <br><br>
+          Heath was appointed to the <strong>Los Angeles Police Department</strong> on April 18, 1994 and attained the coveted position as a <strong>motorcycle officer</strong>. He served with distinction for 27 years and was last assigned to the South Traffic Division. He is survived by his loving wife La Drena; sons Deshawn and Trent; daughter Amari; father Harold; and brother Michael.
+        </p>
+      </div>
+    </div>
+    <div class="rip-strip">
+      <div class="rip-line"></div>
+      <span class="rip-text">Entered the Omega Chapter &mdash; Rest in Eternal Brotherhood</span>
+      <div class="rip-line"></div>
+    </div>
+  </div>
+
+  <!-- BARAKA McCRAW -->
+  <div class="mem-card">
+    <div class="card-header">
+      <div class="omega-symbol">Ω</div>
+      <div class="card-header-info">
+        <div class="bro-name">Brother Baraka Shakid McCraw</div>
+        <div class="bro-line-info">Spring 1990 &middot; Shirikana Line &middot; No. 1 (Ace) &middot; Pi Kappa Chapter</div>
+      </div>
+      <div class="bro-dates">December 24, 1970 &ndash; [Date of Passing]</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-area">
+        <img class="brother-photo" src="https://static.wixstatic.com/media/96e91e_833552010e5d49da9981a1668560b28b~mv2.jpg" alt="Brother Baraka McCraw">
+        <div class="photo-caption">Bro. Baraka McCraw<br>Spring 1990</div>
+      </div>
+      <div class="bio-area">
+        <p class="bio-text">
+          <strong>Baraka Shakid McCraw</strong> was born December 24th, 1970 in Pittsburgh, Pennsylvania. He eventually settled in Compton, California and graduated from Junipero Serra High School in Gardena, CA. A standout football player and active in student government, he studied Speech Communications and Pan-African Studies at California State University, Northridge.
+          <br><br>
+          He pledged as the <strong>ace of the Spring 1990 Shirikana line</strong> and dedicated his life to community service through the Fraternity. He was employed as a <strong>Deputy Probation Officer</strong> through the Los Angeles County of Probation, and performed under the moniker <strong>Big Baraka</strong> — lauded as a BET Hot 100 breakout artist. He is survived by his daughter, Breanna Cherisse McCraw, her mother, Cherisse Gayles, his mother, Vera McCraw, sisters Claudette Monique Tipton and Rita McCraw, brothers Keith McCraw, Roy McCraw, and Willie Clay Jr., and grandparents Pastor Lewis and Beanner Rogers Sr., and aunt Ruth Marshall and special friend LaTonia Allen.
+        </p>
+      </div>
+    </div>
+    <div class="rip-strip">
+      <div class="rip-line"></div>
+      <span class="rip-text">Entered the Omega Chapter &mdash; Rest in Eternal Brotherhood</span>
+      <div class="rip-line"></div>
+    </div>
+  </div>
+
+  <!-- LARRY HENDERSON -->
+  <div class="mem-card">
+    <div class="card-header">
+      <div class="omega-symbol">Ω</div>
+      <div class="card-header-info">
+        <div class="bro-name">Brother Larry Dion Henderson</div>
+        <div class="bro-line-info">Spring 1996 &middot; Yakini Moja Line &middot; No. 2 &middot; Pi Kappa Chapter</div>
+      </div>
+      <div class="bro-dates">January 10, 1975 &ndash; [Date of Passing]</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-area">
+        <img class="brother-photo" src="https://static.wixstatic.com/media/96e91e_812b455c9f30499b9f47b1fbc1fd7fa4~mv2.png" alt="Brother Larry Henderson">
+        <div class="photo-caption">Bro. Larry Henderson<br>Spring 1996</div>
+      </div>
+      <div class="bio-area">
+        <p class="bio-text">
+          <strong>Larry Dion Henderson</strong> was born January 10, 1975 in Santa Monica, California. After graduating from high school in 1993, Larry attended California State University, Northridge majoring in Computer Science. He joined Alpha Phi Alpha on the 1996 Yakini Moja line as the number two of Pi Kappa Chapter.
+          <br><br>
+          Larry worked at <strong>Disney in the Feature Animation Department</strong>, later transitioning to a financial analyst position with Cigna and Anthem Healthcare. His love for sports — especially the <strong>Los Angeles Lakers</strong> and San Francisco 49ers — was unmatched. He is survived by his wife Kenya, daughter Kayla, son Kyle, and mother Linda Qualls.
+        </p>
+      </div>
+    </div>
+    <div class="rip-strip">
+      <div class="rip-line"></div>
+      <span class="rip-text">Entered the Omega Chapter &mdash; Rest in Eternal Brotherhood</span>
+      <div class="rip-line"></div>
+    </div>
+  </div>
+
+  <!-- LESHAUN BELL -->
+  <div class="mem-card">
+    <div class="card-header">
+      <div class="omega-symbol">Ω</div>
+      <div class="card-header-info">
+        <div class="bro-name">Brother Leshaun Eguene Bell</div>
+        <div class="bro-line-info">Spring 2001 &middot; Resurrection Line &middot; No. 4 &middot; Pi Kappa Chapter</div>
+      </div>
+      <div class="bro-dates">February 12, 1975 &ndash; 2006</div>
+    </div>
+    <div class="card-body">
+      <div class="photo-area">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <div class="photo-caption">Bro. Leshaun Bell<br>Spring 2001</div>
+      </div>
+      <div class="bio-area">
+        <p class="bio-text">
+          <strong>Leshaun Eguene Bell</strong> was born February 12, 1975 in Los Angeles, California. He was initiated into Alpha Phi Alpha Fraternity, Inc. on March 9, 2001 through the Pi Kappa Chapter as the number four on the <strong>Resurrection line</strong>.
+          <br><br>
+          While a student at CSUN, Leshaun was a standout student athlete and member of various student organizations. Prior to CSUN, he played football at <strong>West Texas A&amp;M University</strong>. He loved his family, helping youth in the community, and playing Madden Football. He is survived by his wife Rachel (Jackson), and sons Leshaun E. Bell Jr. and Landon Bell, who both pursued student athlete careers playing collegiate football.
+        </p>
+      </div>
+    </div>
+    <div class="rip-strip">
+      <div class="rip-line"></div>
+      <span class="rip-text">Entered the Omega Chapter &mdash; 2006</span>
+      <div class="rip-line"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CLOSING -->
+<div class="mem-closing">
+  <div class="mem-closing-title">Forever in Brotherhood</div>
+  <p class="mem-closing-text">Though they have crossed into the Omega Chapter, the spirit of these brothers remains woven into the fabric of Pi Kappa Chapter. Their lives embodied the ideals of Alpha Phi Alpha — scholarship, brotherhood, and service. We carry them with us.</p>
+  <div class="omega-final">Ω</div>
+</div>
+
+
+<div id="footer-inject"></div>
+<script>
+  document.getElementById("nav-inject").innerHTML = getNav("memoriam.html");
+  document.getElementById("footer-inject").innerHTML = getFooter();
+  document.getElementById("nav-toggle").addEventListener("click",()=>document.getElementById("nav-mobile").classList.toggle("open"));
+</script>
+<script src="assets/components.js"></script></body>
+</html>

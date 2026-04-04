@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pi Kappa Chapter Lineage | Pi Kappa Lineage</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --black: #000000;
+    --charcoal: #111111;
+    --dark: #1A1A1A;
+    --white: #FFFFFF;
+    --sand: #DAD3CC;
+    --gray: #666666;
+    --border: rgba(184,134,11,0.25);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* HEADER */
+  .lineage-header {
+    text-align: center;
+    padding: clamp(32px, 6vw, 60px) clamp(16px, 4vw, 40px) clamp(28px, 5vw, 48px);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lineage-header::before {
+    content: 'ΑΦΑ';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 20vw, 200px);
+    font-weight: 700;
+    color: rgba(184,134,11,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .lineage-eyebrow {
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .lineage-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 8vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .lineage-title em { color: var(--gold); font-style: italic; }
+
+  .lineage-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 14px auto;
+  }
+
+  .lineage-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3.5vw, 18px);
+    color: var(--sand);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 0 8px;
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    padding: 0 clamp(12px, 3vw, 40px);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    background: var(--charcoal);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-label {
+    font-size: clamp(9px, 2vw, 10px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 14px 14px 14px 0;
+    white-space: nowrap;
+    border-right: 1px solid var(--border);
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .filter-btn {
+    padding: 14px clamp(10px, 2.5vw, 18px);
+    font-size: clamp(9px, 2.2vw, 11px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    cursor: pointer;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* LINES CONTAINER */
+  .lines-container {
+    padding: 0 clamp(12px, 3vw, 40px) clamp(32px, 6vw, 60px);
+  }
+
+  /* LINE CARD */
+  .line-card {
+    margin-top: 2px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+    animation: fadeIn 0.4s ease both;
+    width: 100%;
+  }
+
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(10px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .line-card:nth-child(odd) { background: var(--black); }
+  .line-card:nth-child(even) { background: var(--charcoal); }
+  .line-card:hover { border-color: rgba(184,134,11,0.5); }
+
+  /* LINE HEADER */
+  .line-header {
+    display: grid;
+    grid-template-columns: 56px 1fr auto 32px;
+    align-items: center;
+    gap: clamp(12px, 3vw, 24px);
+    padding: clamp(14px, 3vw, 20px) clamp(14px, 3vw, 32px);
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .line-card.open .line-header {
+    border-bottom-color: var(--border);
+  }
+
+  .line-header:hover { background: rgba(184,134,11,0.04); }
+
+  .line-number-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .line-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .line-number-label {
+    font-size: clamp(8px, 1.8vw, 9px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  .line-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .line-season-year {
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .line-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 4vw, 22px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .line-name-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(11px, 2.5vw, 14px);
+    color: var(--sand);
+  }
+
+  .line-count-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+
+  .line-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 700;
+    color: rgba(184,134,11,0.35);
+    line-height: 1;
+  }
+
+  .line-count-label {
+    font-size: clamp(8px, 1.8vw, 9px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .line-toggle {
+    width: 28px; height: 28px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    border-radius: 0;
+  }
+
+  .line-card.open .line-toggle { transform: rotate(45deg); }
+
+  /* BROTHERS LIST */
+  .brothers-list {
+    display: none;
+    padding: clamp(14px, 3vw, 24px) clamp(14px, 3vw, 32px) clamp(18px, 4vw, 28px);
+  }
+
+  .line-card.open .brothers-list { display: block; }
+
+  .brothers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .brother-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: clamp(10px, 2vw, 13px) clamp(12px, 2.5vw, 16px);
+    background: var(--black);
+    transition: background 0.2s;
+  }
+
+  .line-card:nth-child(even) .brother-item { background: var(--charcoal); }
+  .brother-item:hover { background: rgba(184,134,11,0.07); }
+
+  .brother-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 3vw, 16px);
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.7;
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+
+  .brother-name {
+    font-size: clamp(12px, 3vw, 14px);
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .omega-tag {
+    margin-left: auto;
+    font-size: clamp(8px, 1.8vw, 9px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 3px; height: 3px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+</style>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<div id="nav-inject"></div>
+<div style="height:76px"></div>
+
+
+<div class="lineage-header">
+  <p class="lineage-eyebrow">Alpha Phi Alpha Fraternity, Inc. &middot; Pi Kappa Chapter</p>
+  <h1 class="lineage-title">Chapter <em>Lineage</em></h1>
+  <div class="lineage-divider"></div>
+  <p class="lineage-subtitle">The unbroken line of Pi Kappa Chapter — from our founders to our newest brothers, since 1984.</p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Decade</span>
+  <button class="filter-btn active" onclick="filterLines('all',this)">All</button>
+  <button class="filter-btn" onclick="filterLines('1980s',this)">1980s</button>
+  <button class="filter-btn" onclick="filterLines('1990s',this)">1990s</button>
+  <button class="filter-btn" onclick="filterLines('2000s',this)">2000s</button>
+  <button class="filter-btn" onclick="filterLines('2010s',this)">2010s</button>
+  <button class="filter-btn" onclick="filterLines('2020s',this)">2020s</button>
+</div>
+
+<div class="lines-container" id="lines-container"></div>
+
+<script>
+const lines = [
+  { season:"Fall", year:1984, decade:"1980s", name:"Makashisharo", sub:"",
+    brothers:[{num:1,name:"Darius Blackshire"},{num:2,name:"Mike Bowen"},{num:3,name:"Bernard Ervin"}] },
+  { season:"Spring", year:1985, decade:"1980s", name:"Unique One", sub:"",
+    brothers:[{num:1,name:"Ryan Williams"}] },
+  { season:"Spring", year:1986, decade:"1980s", name:"Ujima", sub:"Collective Responsibility",
+    brothers:[{num:1,name:"Vernon Jackson"},{num:2,name:"Calvin Bryant",omega:true},{num:3,name:"Brian Granville"},{num:4,name:"Jerry Scurlock"},{num:5,name:"Jimmy Hamilton"},{num:6,name:"Kenneth Marvin Wynn"},{num:7,name:"Ashley Tucker"}] },
+  { season:"Fall", year:1986, decade:"1980s", name:"Soulmates", sub:"To Share a Past Life",
+    brothers:[{num:1,name:"Dave Credille"},{num:2,name:"Marvin Tate"},{num:3,name:"James Henry"},{num:4,name:"Eric Brown"},{num:5,name:"Jack Baham"},{num:6,name:"Stephen Johnson"},{num:7,name:"Heath Adams",omega:true},{num:8,name:"Brian Miles"}] },
+  { season:"Fall", year:1987, decade:"1980s", name:"Kikoa Uhodari", sub:"",
+    brothers:[{num:1,name:"Hillard Smith"},{num:2,name:"Derek Jurand"}] },
+  { season:"Spring", year:1988, decade:"1980s", name:"Siku Kuuza", sub:"New Bread",
+    brothers:[{num:1,name:"Scott Stewart"},{num:2,name:"Albert Trey Whittaker III"},{num:3,name:"Martin Reed"},{num:4,name:"John Dokes III"},{num:5,name:"Frederick Watts"}] },
+  { season:"Spring", year:1989, decade:"1980s", name:"Kuumba Nia", sub:"Creativity and Purpose",
+    brothers:[{num:1,name:"Ken Newsome"},{num:2,name:"Amir Akbar Allah"},{num:3,name:"Tyrone Jeffries"},{num:4,name:"Jeffrey Todd Woodard"}] },
+  { season:"Spring", year:1990, decade:"1990s", name:"Shirikana", sub:"To be of One Mind with the Other",
+    brothers:[{num:1,name:"Baraka McCraw",omega:true},{num:2,name:"Trevon Limbrick"},{num:3,name:"Cortland Jackson"},{num:4,name:"Kenny Bereal"}] },
+  { season:"Spring", year:1991, decade:"1990s", name:"Amaziah", sub:"Guided with the Strength of God",
+    brothers:[{num:1,name:"Sean Brown"},{num:2,name:"Shalmar Neal"}] },
+  { season:"Spring", year:1992, decade:"1990s", name:"Askari Nuru", sub:"Soldiers of the Light",
+    brothers:[{num:1,name:"Marcus Legall"},{num:2,name:"Aaron Brumfield"}] },
+  { season:"Spring", year:1993, decade:"1990s", name:"A.A.B.U.", sub:"African American Brothers United",
+    brothers:[{num:1,name:"Damon Oliver"},{num:2,name:"Mike Lyons"},{num:3,name:"Kevin Jenkins"},{num:5,name:"Derrick Brooks"},{num:6,name:"Chris Moore"}] },
+  { season:"Fall", year:1994, decade:"1990s", name:"Kugichagulia", sub:"Self Determination",
+    brothers:[{num:1,name:"Vashon Nutt"}] },
+  { season:"Spring", year:1995, decade:"1990s", name:"Chelal", sub:"Perfection",
+    brothers:[{num:1,name:"Ryan Ballard"},{num:2,name:"Lamonte Amos"}] },
+  { season:"Spring", year:1996, decade:"1990s", name:"Yakini Moja", sub:"",
+    brothers:[{num:1,name:"Jerry C. Doris"},{num:2,name:"Larry Henderson"},{num:3,name:"Dave Gandy"},{num:4,name:"Joseph Criner"}] },
+  { season:"Spring", year:1999, decade:"1990s", name:"Mteuzi Moja", sub:"The Chosen One",
+    brothers:[{num:1,name:"Brian K. Edwards"}] },
+  { season:"Spring", year:2001, decade:"2000s", name:"Resurrection", sub:"",
+    brothers:[{num:1,name:"Lionel Lawrence"},{num:2,name:"Freddie Williams"},{num:3,name:"Falawn Norwood"},{num:4,name:"Leshaun Bell",omega:true}] },
+  { season:"Fall", year:2001, decade:"2000s", name:"Ndefu Utwala", sub:"The Dynasty",
+    brothers:[{num:1,name:"Carlden Lainfiesta"},{num:4,name:"Corey Moody"}] },
+  { season:"Fall", year:2002, decade:"2000s", name:"Tu Mbili", sub:"",
+    brothers:[{num:2,name:"Kevin White"},{num:3,name:"Marcus Wilhite"}] },
+  { season:"Spring", year:2003, decade:"2000s", name:"The Four Horsemen of the Apocalypse", sub:"",
+    brothers:[{num:1,name:"Ernest Alford"},{num:2,name:"Sean Wilson"},{num:3,name:"Kenneth Jackson"},{num:4,name:"Ade Shabazz"}] },
+  { season:"Spring", year:2004, decade:"2000s", name:"Mbili Moya Moja Bana", sub:"",
+    brothers:[{num:2,name:"McKay Loving"}] },
+  { season:"Spring", year:2005, decade:"2000s", name:"Kalamo Imani", sub:"Unexpected Faith",
+    brothers:[{num:1,name:"Tete Bankouadagba"}] },
+  { season:"Spring", year:2006, decade:"2000s", name:"Kiburi Azima", sub:"",
+    brothers:[{num:1,name:"Chauncey McClain"},{num:2,name:"Frederick Earles"}] },
+  { season:"Fall", year:2006, decade:"2000s", name:"Kabali Kaza", sub:"",
+    brothers:[{num:2,name:"Michael Allen"},{num:3,name:"James Hermon"},{num:4,name:"Clayton Johnson"},{num:5,name:"Jahmai Webster"},{num:6,name:"Brian Bamuhaira"}] },
+  { season:"Fall", year:2010, decade:"2010s", name:"Nguvu Na Damira", sub:"",
+    brothers:[{num:3,name:"Thomas Johnson III"}] },
+  { season:"Spring", year:2011, decade:"2010s", name:"Temeles nab Tariq", sub:"",
+    brothers:[{num:1,name:"Donovan Hatfield"},{num:2,name:"Senai Andikiel"},{num:3,name:"Byron Thompson"}] },
+  { season:"Fall", year:2011, decade:"2010s", name:"Kuamua Imani", sub:"",
+    brothers:[{num:1,name:"Alvin Roberts"},{num:2,name:"Edward Hollmon"},{num:3,name:"Jovon Riggins"},{num:4,name:"Felix Umukoro"},{num:5,name:"Troy Alexander"}] },
+  { season:"Spring", year:2013, decade:"2010s", name:"Wakali Moyo", sub:"",
+    brothers:[{num:1,name:"Dawaun Lucas"},{num:2,name:"Tawaun Lucas"},{num:3,name:"Kingsley Okon"}] },
+  { season:"Spring", year:2018, decade:"2010s", name:"Wakati Ujao", sub:"",
+    brothers:[{num:1,name:"Deven Clare"},{num:2,name:"Kenneth Giles"}] },
+  { season:"Spring", year:2020, decade:"2020s", name:"F.B.F.S.", sub:"",
+    brothers:[{num:1,name:"Julian Remy"},{num:2,name:"Jamelle Moore"},{num:3,name:"Chris Carter"},{num:4,name:"Christian Ross"}] },
+  { season:"Spring", year:2021, decade:"2020s", name:"Jabali", sub:"",
+    brothers:[{num:1,name:"Derrick Lewis"}] },
+  { season:"Spring", year:2022, decade:"2020s", name:"Shupavu Mbili", sub:"",
+    brothers:[{num:1,name:"Steve Terrell"},{num:2,name:"Tyrone Jeffries Jr."}] },
+  { season:"Spring", year:2023, decade:"2020s", name:"The Saviors", sub:"T.K.O.D.",
+    brothers:[{num:1,name:"Jordan Cox"},{num:2,name:"Kaylon Williams"},{num:3,name:"Darrell Horn"},{num:4,name:"Elijah Lockett"},{num:5,name:"Sean Dillingham"},{num:6,name:"Brian Miles Jr."}] },
+  { season:"Spring", year:2024, decade:"2020s", name:"Nasaba Tatu", sub:"",
+    brothers:[{num:1,name:"Jordan Young"},{num:2,name:"Milkias Kassa"},{num:3,name:"Tyshawn Grant"}] },
+  { season:"Spring", year:2025, decade:"2020s", name:"Mungu Kama Hadi", sub:"",
+    brothers:[{num:1,name:"Billie Miles"},{num:3,name:"Dylan Lewis"},{num:4,name:"Muhammad Sherrills"},{num:5,name:"Nasim Abdul-Malik"}] }
+];
+
+function renderLines(filtered) {
+  const container = document.getElementById('lines-container');
+  container.innerHTML = '';
+  filtered.forEach((line, index) => {
+    const card = document.createElement('div');
+    card.className = 'line-card';
+    card.dataset.decade = line.decade;
+
+    const brothersHTML = line.brothers.map(b => `
+      <div class="brother-item">
+        <span class="brother-num">${b.num}.</span>
+        <span class="brother-name">${b.name}</span>
+        ${b.omega ? '<span class="omega-tag">&#937; Chapter</span>' : ''}
+      </div>`).join('');
+
+    card.innerHTML = `
+      <div class="line-header" onclick="toggleLine(this)">
+        <div class="line-number-block">
+          <div class="line-number">${String(index + 1).padStart(2,'0')}</div>
+          <div class="line-number-label">Line</div>
+        </div>
+        <div class="line-info">
+          <div class="line-season-year">${line.season} ${line.year}</div>
+          <div class="line-name">${line.name}</div>
+          ${line.sub ? `<div class="line-name-sub">${line.sub}</div>` : ''}
+        </div>
+        <div class="line-count-block">
+          <div class="line-count">${line.brothers.length}</div>
+          <div class="line-count-label">${line.brothers.length === 1 ? 'Bro' : 'Bros'}</div>
+        </div>
+        <div class="line-toggle">+</div>
+      </div>
+      <div class="brothers-list">
+        <div class="brothers-grid">${brothersHTML}</div>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+function toggleLine(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function filterLines(decade, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLines(decade === 'all' ? lines : lines.filter(l => l.decade === decade));
+}
+
+renderLines(lines);
+</script>
+
+<div id="footer-inject"></div>
+<script>
+  document.getElementById("nav-inject").innerHTML = getNav("chapter.html");
+  document.getElementById("footer-inject").innerHTML = getFooter();
+  document.getElementById("nav-toggle").addEventListener("click",()=>document.getElementById("nav-mobile").classList.toggle("open"));
+</script>
+<script src="assets/components.js"></script></body>
+</html>

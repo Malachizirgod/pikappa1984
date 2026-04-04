@@ -1,0 +1,179 @@
+/* ============================================
+   PI KAPPA CHAPTER — GLOBAL STYLES
+   Alpha Phi Alpha Fraternity, Inc.
+   ============================================ */
+
+:root {
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --black: #000000;
+  --charcoal: #111111;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --sand: #DAD3CC;
+  --gray: #666666;
+  --border: rgba(184,134,11,0.25);
+  --nav-height: 76px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Century Gothic","AppleGothic",Futura,sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ---- SHARED TYPOGRAPHY ---- */
+.eyebrow {
+  font-size: clamp(9px,2vw,11px);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-title {
+  font-family: "Cormorant Garamond","Playfair Display",Georgia,serif;
+  font-size: clamp(26px,5vw,42px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.gold-bar {
+  width: 48px; height: 2px;
+  background: var(--gold);
+  margin: 14px 0;
+}
+
+.body-text {
+  font-family: "Cormorant Garamond",Georgia,serif;
+  font-size: clamp(15px,3.5vw,17px);
+  line-height: 1.85;
+  color: var(--sand);
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top:0; left:0; right:0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(16px,4vw,48px);
+  height: var(--nav-height);
+}
+
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo img { width:46px; height:46px; object-fit:contain; }
+.nav-logo-text { font-size:0.72rem; font-weight:700; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; line-height:1.3; }
+.nav-logo-text span { display:block; color:var(--white); font-weight:400; font-size:0.6rem; letter-spacing:0.14em; }
+
+.nav-links { display:flex; gap:clamp(14px,3vw,28px); list-style:none; }
+.nav-links a { font-size:clamp(9px,1.8vw,11px); letter-spacing:0.14em; text-transform:uppercase; color:var(--sand); text-decoration:none; padding-bottom:4px; border-bottom:1px solid transparent; transition:color 0.2s,border-color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--gold); border-bottom-color:var(--gold); }
+
+/* Hamburger */
+.nav-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.nav-toggle span { display:block; width:24px; height:2px; background:var(--white); transition:all 0.3s; }
+
+.nav-mobile { display:none; }
+
+@media (max-width: 768px) {
+  .nav-links { display:none; }
+  .nav-toggle { display:flex; }
+  .nav-mobile {
+    position:fixed; top:var(--nav-height); left:0; right:0;
+    background:rgba(0,0,0,0.98);
+    border-bottom:1px solid var(--border);
+    padding:20px clamp(16px,4vw,32px);
+    flex-direction:column; gap:0;
+    z-index:999;
+  }
+  .nav-mobile.open { display:flex; }
+  .nav-mobile a { font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--sand); text-decoration:none; padding:14px 0; border-bottom:1px solid var(--border); transition:color 0.2s; }
+  .nav-mobile a:hover { color:var(--gold); }
+}
+
+/* ---- PAGE HEADER ---- */
+.page-header {
+  background: var(--charcoal);
+  border-bottom: 1px solid var(--border);
+  padding: clamp(48px,8vw,80px) clamp(16px,5vw,80px) clamp(36px,6vw,60px);
+  margin-top: var(--nav-height);
+  position: relative; overflow: hidden;
+}
+
+.page-header::after {
+  content:""; position:absolute; right:60px; top:50%; transform:translateY(-50%);
+  width:240px; height:240px;
+  background:radial-gradient(circle,rgba(184,134,11,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.page-header h1 { font-family:"Cormorant Garamond","Playfair Display",serif; font-size:clamp(28px,6vw,52px); font-weight:900; line-height:1.1; }
+.page-header h1 em { color:var(--gold); font-style:italic; }
+.page-header p { font-family:"Cormorant Garamond",serif; font-size:clamp(14px,3vw,17px); color:var(--sand); max-width:580px; margin-top:10px; line-height:1.8; }
+
+/* ---- BUTTONS ---- */
+.btn-gold { display:inline-block; padding:12px 32px; background:var(--gold); color:var(--black); font-size:clamp(9px,2vw,11px); font-weight:700; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none; border:none; cursor:pointer; transition:background 0.2s,transform 0.2s; }
+.btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); }
+.btn-outline { display:inline-block; padding:12px 32px; border:1px solid var(--gold); color:var(--gold); font-size:clamp(9px,2vw,11px); font-weight:700; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none; background:transparent; cursor:pointer; transition:all 0.2s; margin-left:12px; }
+.btn-outline:hover { background:var(--gold); color:var(--black); }
+
+@media (max-width:480px) {
+  .btn-outline { margin-left:0; margin-top:10px; }
+}
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--charcoal);
+  border-top: 1px solid var(--border);
+  padding: clamp(40px,6vw,60px) clamp(16px,5vw,80px) clamp(28px,4vw,40px);
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: clamp(24px,4vw,48px);
+}
+
+@media (max-width:768px) {
+  footer { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width:480px) {
+  footer { grid-template-columns: 1fr; }
+}
+
+.footer-logo-block { display:flex; flex-direction:column; gap:10px; }
+.footer-logo-block img { width:52px; object-fit:contain; }
+.footer-brand { font-family:"Cormorant Garamond",serif; font-size:0.95rem; font-weight:700; color:var(--gold); }
+.footer-text { font-family:"Cormorant Garamond",serif; font-size:0.92rem; color:var(--gray); line-height:1.8; }
+.footer-col h4 { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-links a { font-family:"Cormorant Garamond",serif; font-size:0.95rem; color:var(--gray); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+
+.footer-bottom {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: clamp(12px,2vw,16px) clamp(16px,5vw,80px);
+  display: flex; justify-content:space-between; align-items:center;
+  flex-wrap: wrap; gap: 8px;
+}
+
+.footer-copy { font-size:clamp(9px,2vw,11px); color:var(--gray); letter-spacing:0.08em; }
+.footer-motto { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(11px,2.5vw,14px); color:var(--gold); }
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.fade-up { animation: fadeUp 0.7s ease both; }
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--black); }
+::-webkit-scrollbar-thumb { background:var(--gold); }

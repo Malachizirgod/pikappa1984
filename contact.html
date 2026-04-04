@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Pi Kappa Chapter</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.contact-layout { padding:clamp(40px,7vw,72px) clamp(16px,5vw,80px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,6vw,68px); align-items:start; }
+@media(max-width:700px){ .contact-layout{grid-template-columns:1fr;} }
+.join-info h1 { font-family:"Playfair Display",serif; font-size:clamp(26px,6vw,42px); font-weight:900; line-height:1.1; margin-bottom:16px; }
+.join-info h1 em { color:var(--gold); font-style:italic; }
+.req-box { border:1px solid var(--border); padding:clamp(20px,4vw,28px); margin:20px 0; background:rgba(184,134,11,0.03); }
+.req-list { list-style:none; }
+.req-list li { display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid rgba(184,134,11,0.08); font-family:"Cormorant Garamond",serif; font-size:clamp(14px,2.5vw,16px); color:var(--sand); }
+.req-dot { width:5px;height:5px; background:var(--gold); border-radius:50%; margin-top:9px; flex-shrink:0; }
+.contact-form { background:var(--charcoal); border:1px solid var(--border); padding:clamp(28px,5vw,44px); }
+.form-title { font-family:"Playfair Display",serif; font-size:clamp(16px,3vw,22px); margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); }
+.form-group { margin-bottom:14px; }
+.form-label { display:block; font-size:clamp(8px,1.8vw,10px); letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); margin-bottom:6px; }
+.form-input { width:100%; background:var(--black); border:1px solid var(--border); padding:10px 13px; color:var(--white); font-family:"Century Gothic",sans-serif; font-size:clamp(12px,2.5vw,14px); outline:none; transition:border-color 0.2s; }
+.form-input:focus { border-color:var(--gold); }
+textarea.form-input { min-height:100px; resize:vertical; }
+</style>
+</head>
+<body>
+<div id="nav-inject"></div>
+<div style="height:76px"></div>
+
+<div class="page-header">
+  <span class="eyebrow">Pi Kappa Chapter</span>
+  <h1>Become <em>an Alpha.</em></h1>
+  <div class="gold-bar"></div>
+  <p>Membership in Alpha Phi Alpha Fraternity, Inc. is by invitation only, extended to men who demonstrate the highest standards of scholarship and character.</p>
+</div>
+
+<div class="contact-layout">
+  <div class="join-info">
+    <span class="eyebrow">Membership Information</span>
+    <p class="body-text">Alpha Phi Alpha Fraternity, Inc. does not solicit memberships. All interest in membership is coordinated through the national organization at apa1906.net. Pi Kappa Chapter at CSUN welcomes interest from men who are committed to scholarship, service, and brotherhood.</p>
+    <div class="req-box">
+      <span class="eyebrow" style="margin-bottom:12px">General Requirements</span>
+      <ul class="req-list">
+        <li><div class="req-dot"></div>Enrolled at California State University, Northridge</li>
+        <li><div class="req-dot"></div>Minimum GPA as required by the national organization</li>
+        <li><div class="req-dot"></div>Demonstrated commitment to service and leadership</li>
+        <li><div class="req-dot"></div>Strong moral character and integrity</li>
+        <li><div class="req-dot"></div>Formal interest submitted through apa1906.net</li>
+      </ul>
+    </div>
+    <a class="btn-gold" href="https://apa1906.net/membership/" target="_blank">Submit Interest at apa1906.net</a>
+  </div>
+  <div class="contact-form">
+    <div class="form-title">Contact Pi Kappa</div>
+    <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your name"></div>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="your@email.com"></div>
+    <div class="form-group"><label class="form-label">Subject</label><input class="form-input" type="text" placeholder="Event inquiry, collaboration, etc."></div>
+    <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Your message..."></textarea></div>
+    <button class="btn-gold" style="width:100%;text-align:center;padding:13px">Send Message</button>
+    <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--border)">
+      <span class="eyebrow" style="margin-bottom:8px">Direct Contact</span>
+      <p class="body-text" style="font-size:14px">&#128231; pikappa@pikappa1984.online</p>
+      <p class="body-text" style="font-size:14px;margin-top:5px">&#128205; California State University, Northridge</p>
+      <p class="body-text" style="font-size:14px;margin-top:5px">&#128247; <a href="https://www.instagram.com/csunalphas/" target="_blank" style="color:var(--gold)">@csunalphas</a></p>
+    </div>
+  </div>
+</div>
+
+<div id="footer-inject"></div>
+<script src="assets/components.js"></script>
+<script>
+  document.getElementById('nav-inject').innerHTML = getNav('contact.html');
+  document.getElementById('footer-inject').innerHTML = getFooter();
+  document.getElementById('nav-toggle').addEventListener('click',()=>document.getElementById('nav-mobile').classList.toggle('open'));
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service & Programs | Pi Kappa Chapter</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.programs-grid { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--border); margin:0 clamp(16px,5vw,80px) clamp(40px,6vw,72px); }
+@media(max-width:640px){ .programs-grid{grid-template-columns:1fr;margin:0 16px 40px;} }
+.prog-card { padding:clamp(32px,5vw,52px) clamp(20px,4vw,44px); border-right:1px solid var(--border); border-bottom:1px solid var(--border); position:relative; transition:background 0.3s; }
+.prog-card:hover { background:rgba(184,134,11,0.04); }
+.prog-card::after { content:""; position:absolute; left:0;top:0;bottom:0; width:2px; background:var(--gold); }
+.prog-tag { display:inline-block; font-size:clamp(8px,1.8vw,10px); letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); border:1px solid var(--border); padding:3px 10px; margin-bottom:14px; }
+.prog-title { font-family:"Cormorant Garamond",serif; font-size:clamp(16px,3.5vw,22px); font-weight:700; margin-bottom:10px; line-height:1.3; }
+.prog-title a { color:var(--white); text-decoration:none; transition:color 0.2s; }
+.prog-title a:hover { color:var(--gold); }
+.prog-text { font-family:"Cormorant Garamond",serif; font-size:clamp(14px,2.5vw,16px); color:var(--sand); line-height:1.8; }
+.sec-hdr { padding:clamp(40px,6vw,64px) clamp(16px,5vw,80px) clamp(24px,4vw,36px); }
+</style>
+</head>
+<body>
+<div id="nav-inject"></div>
+<div style="height:76px"></div>
+
+<div class="page-header">
+  <span class="eyebrow">Community Impact</span>
+  <h1>Service <em>&amp; Programs</em></h1>
+  <div class="gold-bar"></div>
+  <p>Alpha Phi Alpha has always believed that scholarship without service is incomplete. Pi Kappa answers that call every week.</p>
+</div>
+
+<div class="sec-hdr">
+  <span class="eyebrow">National Initiatives</span>
+  <h2 class="section-title">National Programs</h2>
+  <div class="gold-bar"></div>
+</div>
+
+<div class="programs-grid">
+  <div class="prog-card">
+    <div class="prog-tag">Education</div>
+    <div class="prog-title"><a href="https://apa1906.net/national-programs/go-to-high-school-go-to-college/" target="_blank">Go-to-High-School, Go-to-College</a></div>
+    <p class="prog-text">One of the oldest national programs in Black fraternal history. Pi Kappa hosts college prep workshops, school visits, and mentorship sessions to inspire the next generation of Black scholars in the San Fernando Valley.</p>
+  </div>
+  <div class="prog-card">
+    <div class="prog-tag">Civic Action</div>
+    <div class="prog-title"><a href="https://apa1906.net/national-programs/a-voteless-people-is-a-hopeless-people/" target="_blank">A Voteless People Is a Hopeless People</a></div>
+    <p class="prog-text">We register voters, host civic education forums, and advocate for full political participation. Every election season, Pi Kappa mobilizes brothers and neighbors to exercise their right to vote.</p>
+  </div>
+  <div class="prog-card">
+    <div class="prog-tag">Brotherhood</div>
+    <div class="prog-title"><a href="https://apa1906.net/national-programs/brothers-keeper/" target="_blank">Brother&rsquo;s Keeper</a></div>
+    <p class="prog-text">Advocating and improving the quality of life for Alpha Phi Alpha&rsquo;s senior brothers, their spouses and widows, brothers with disabilities, and vulnerable community members.</p>
+  </div>
+  <div class="prog-card">
+    <div class="prog-tag">Mentorship</div>
+    <div class="prog-title"><a href="https://apa1906.net/national-programs/project-alpha/" target="_blank">Project Alpha&trade;</a></div>
+    <p class="prog-text">Our brothers serve as role models and mentors for young men through tutoring, career panels, and one-on-one guidance &mdash; investing in the leaders of tomorrow right here in Hollywood.</p>
+  </div>
+</div>
+
+<div id="footer-inject"></div>
+<script src="assets/components.js"></script>
+<script>
+  document.getElementById('nav-inject').innerHTML = getNav('service.html');
+  document.getElementById('footer-inject').innerHTML = getFooter();
+  document.getElementById('nav-toggle').addEventListener('click',()=>document.getElementById('nav-mobile').classList.toggle('open'));
+</script>
+</body>
+</html>

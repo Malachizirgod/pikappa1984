@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Alpha Phi Alpha | Pi Kappa Chapter</title>
+<meta name="description" content="Learn about Alpha Phi Alpha Fraternity, Inc. — founded in 1906 at Cornell University. Discover the Seven Jewels, notable brothers, and the legacy that shaped Pi Kappa Chapter.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.about-grid { display:grid; grid-template-columns:1.3fr 1fr; border-bottom:1px solid var(--border); }
+@media(max-width:700px){ .about-grid{grid-template-columns:1fr;} }
+.about-text { padding:clamp(40px,7vw,80px) clamp(16px,5vw,80px); border-right:1px solid var(--border); }
+@media(max-width:700px){ .about-text{border-right:none;border-bottom:1px solid var(--border);} }
+.about-right { padding:clamp(40px,6vw,72px) clamp(16px,4vw,56px); display:flex; flex-direction:column; justify-content:center; gap:clamp(16px,3vw,28px); }
+.founding-stat { text-align:center; padding:clamp(20px,4vw,32px); border:1px solid var(--border); background:rgba(184,134,11,0.04); }
+.founding-year { font-family:"Playfair Display",serif; font-size:clamp(2.4rem,6vw,3.5rem); font-weight:900; color:var(--gold); line-height:1; }
+.founding-label { font-size:clamp(9px,1.8vw,11px); letter-spacing:0.2em; text-transform:uppercase; color:var(--sand); margin-top:5px; }
+
+.sec { padding:clamp(40px,7vw,72px) clamp(16px,5vw,80px); border-bottom:1px solid var(--border); }
+.jewels-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); border:1px solid var(--border); margin-top:24px; }
+.jewel-card { padding:clamp(16px,3vw,26px) 14px; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background 0.2s; }
+.jewel-card:hover { background:rgba(184,134,11,0.06); }
+.jewel-initial { font-family:"Playfair Display",serif; font-size:clamp(1.4rem,3vw,1.8rem); font-weight:700; color:var(--gold); margin-bottom:6px; }
+.jewel-name { font-size:clamp(9px,1.8vw,11px); font-weight:700; margin-bottom:3px; line-height:1.3; }
+.jewel-desc { font-size:clamp(8px,1.6vw,10px); color:var(--gray); }
+
+.notable-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); border:1px solid var(--border); margin-top:24px; }
+.notable-item { padding:clamp(18px,3vw,28px) 16px; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background 0.2s; }
+.notable-item:hover { background:rgba(184,134,11,0.06); }
+.notable-name { font-family:"Cormorant Garamond",serif; font-size:clamp(13px,2.5vw,16px); font-weight:700; margin-bottom:4px; line-height:1.3; }
+.notable-role { font-size:clamp(8px,1.6vw,10px); color:var(--gold); text-transform:uppercase; letter-spacing:0.1em; }
+
+.timeline-items { padding-left:clamp(16px,3vw,28px); border-left:1px solid var(--border); margin-top:24px; }
+.t-item { padding-left:clamp(18px,3vw,26px); padding-bottom:28px; position:relative; }
+.t-item::before { content:""; position:absolute; left:-5px; top:7px; width:9px; height:9px; background:var(--gold); border-radius:50%; }
+.t-year { font-family:"Playfair Display",serif; font-size:clamp(1rem,3vw,1.2rem); font-weight:700; color:var(--gold); margin-bottom:3px; }
+.t-text { font-family:"Cormorant Garamond",serif; font-size:clamp(14px,2.5vw,16px); color:var(--sand); line-height:1.7; }
+</style>
+</head>
+<body>
+<div id="nav-inject"></div>
+
+<div class="page-header">
+  <span class="eyebrow">Est. December 4, 1906 &middot; Cornell University</span>
+  <h1>About <em>Alpha Phi Alpha</em></h1>
+  <div class="gold-bar"></div>
+  <p>The first intercollegiate fraternity established for African Americans &mdash; built on scholarship, fellowship, good character, and the uplifting of humanity.</p>
+</div>
+
+<div class="about-grid">
+  <div class="about-text">
+    <span class="eyebrow">Our Foundation</span>
+    <h2 class="section-title">A Legacy Over a Century Strong</h2>
+    <div class="gold-bar"></div>
+    <p class="body-text" style="margin-top:16px">Alpha Phi Alpha Fraternity, Inc. was founded on December 4, 1906 at Cornell University in Ithaca, New York. Born during an era of profound racial discrimination, the fraternity was established by seven visionary men who believed that higher education was the path to freedom, equality, and progress for the African American community.</p>
+    <p class="body-text" style="margin-top:14px">From its very beginning, Alpha Phi Alpha has been a fraternity of &ldquo;firsts&rdquo; &mdash; the first intercollegiate Greek-letter fraternity for Black men, the first to develop a nationally coordinated program for advancing Black education, and first to produce a U.S. Supreme Court Justice, a Nobel Peace Prize laureate, and countless pillars of American history.</p>
+    <p class="body-text" style="margin-top:14px">Today, with over 700 chapters worldwide and more than 185,000 members initiated, Alpha Phi Alpha remains the preeminent organization for developing leaders and advancing the cause of justice.</p>
+  </div>
+  <div class="about-right">
+    <div class="founding-stat"><div class="founding-year">1906</div><div class="founding-label">Year Founded</div></div>
+    <div class="founding-stat"><div class="founding-year">700+</div><div class="founding-label">Chapters Worldwide</div></div>
+    <div class="founding-stat"><div class="founding-year">185K+</div><div class="founding-label">Members Initiated</div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <span class="eyebrow">The Founders</span>
+  <h2 class="section-title">The Seven Jewels</h2>
+  <div class="gold-bar"></div>
+  <div class="jewels-grid">
+    <div class="jewel-card"><div class="jewel-initial">H.C.</div><div class="jewel-name">Henry Arthur Callis</div><div class="jewel-desc">Physician &amp; Activist</div></div>
+    <div class="jewel-card"><div class="jewel-initial">C.C.</div><div class="jewel-name">Charles Henry Chapman</div><div class="jewel-desc">Educator</div></div>
+    <div class="jewel-card"><div class="jewel-initial">E.J.</div><div class="jewel-name">Eugene Kinckle Jones</div><div class="jewel-desc">Social Worker</div></div>
+    <div class="jewel-card"><div class="jewel-initial">G.K.</div><div class="jewel-name">George Biddle Kelley</div><div class="jewel-desc">Civil Engineer</div></div>
+    <div class="jewel-card"><div class="jewel-initial">N.M.</div><div class="jewel-name">Nathaniel Allison Murray</div><div class="jewel-desc">Physician</div></div>
+    <div class="jewel-card"><div class="jewel-initial">V.T.</div><div class="jewel-name">Vertner Woodson Tandy</div><div class="jewel-desc">Architect</div></div>
+    <div class="jewel-card"><div class="jewel-initial">R.O.</div><div class="jewel-name">Robert Harold Ogle</div><div class="jewel-desc">Dentist</div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <span class="eyebrow">Notable Brothers</span>
+  <h2 class="section-title">Alphas Who Changed the World</h2>
+  <div class="gold-bar"></div>
+  <div class="notable-grid">
+    <div class="notable-item"><div class="notable-name">Dr. Martin Luther King Jr.</div><div class="notable-role">Civil Rights Leader</div></div>
+    <div class="notable-item"><div class="notable-name">W.E.B. Du Bois</div><div class="notable-role">Scholar &amp; Activist</div></div>
+    <div class="notable-item"><div class="notable-name">Thurgood Marshall</div><div class="notable-role">Supreme Court Justice</div></div>
+    <div class="notable-item"><div class="notable-name">Jesse Owens</div><div class="notable-role">Olympic Champion</div></div>
+    <div class="notable-item"><div class="notable-name">Paul Robeson</div><div class="notable-role">Actor &amp; Activist</div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <span class="eyebrow">History</span>
+  <h2 class="section-title">A Legacy of Firsts</h2>
+  <div class="gold-bar"></div>
+  <div class="timeline-items">
+    <div class="t-item"><div class="t-year">1906</div><p class="t-text">Founded at Cornell University by seven visionary men committed to scholarship, fellowship, and the uplifting of humanity.</p></div>
+    <div class="t-item"><div class="t-year">1921</div><p class="t-text">Launched the Go-to-High-School, Go-to-College program &mdash; one of the earliest organized campaigns to increase Black educational attainment in America.</p></div>
+    <div class="t-item"><div class="t-year">1933</div><p class="t-text">Initiated Thurgood Marshall, who became the first African American Justice of the United States Supreme Court.</p></div>
+    <div class="t-item"><div class="t-year">1957</div><p class="t-text">Brother Martin Luther King Jr. rises to national prominence leading the Civil Rights Movement, embodying Alpha&rsquo;s commitment to justice.</p></div>
+    <div class="t-item"><div class="t-year">1984</div><p class="t-text">Pi Kappa Chapter is chartered at California State University, Northridge &mdash; The HollyWOOD Chapter begins its legacy of service.</p></div>
+    <div class="t-item"><div class="t-year">2024</div><p class="t-text">Pi Kappa Chapter celebrates its 40th Anniversary, honoring four decades of brotherhood, service, and excellence in the Hollywood and San Fernando Valley community.</p></div>
+  </div>
+</div>
+
+<div id="footer-inject"></div>
+<script src="assets/components.js"></script>
+<script>
+  document.getElementById('nav-inject').innerHTML = getNav('about.html');
+  document.getElementById('footer-inject').innerHTML = getFooter();
+  document.getElementById('nav-toggle').addEventListener('click',()=>document.getElementById('nav-mobile').classList.toggle('open'));
+</script>
+</body>
+</html>

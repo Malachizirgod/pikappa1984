@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pi Kappa Chapter | Alpha Phi Alpha Fraternity, Inc.</title>
+<meta name="description" content="Pi Kappa Chapter of Alpha Phi Alpha Fraternity, Inc., established in 1984 at Cal State Northridge. The HollyWOOD Chapter — dedicated to scholarship, brotherhood, and service.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* HOME SPECIFIC */
+.hero {
+  position:relative; height:100vh; min-height:560px;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:url('assets/anniversary.jpg') center 20%/cover no-repeat;
+  filter:brightness(0.32);
+}
+.hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.45) 55%,rgba(0,0,0,0.95) 100%);
+}
+.hero-content {
+  position:relative; text-align:center;
+  max-width:860px; padding:0 clamp(16px,4vw,40px);
+  animation:fadeUp 1s ease both;
+}
+.hero-logo { width:clamp(90px,15vw,136px); object-fit:contain; margin:0 auto 24px; display:block; filter:drop-shadow(0 4px 32px rgba(184,134,11,0.55)); animation:fadeUp 1s 0.1s ease both; }
+.hero-eyebrow { font-size:clamp(9px,2vw,11px); letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; animation:fadeUp 1s 0.2s ease both; }
+.hero-title { font-family:"Playfair Display",serif; font-size:clamp(2.6rem,8vw,5.2rem); font-weight:900; line-height:1.05; margin-bottom:6px; animation:fadeUp 1s 0.3s ease both; }
+.hero-sub { font-family:"Cormorant Garamond",serif; font-size:clamp(1rem,3vw,1.6rem); font-style:italic; color:var(--gold); margin-bottom:20px; animation:fadeUp 1s 0.35s ease both; }
+.hero-divider { width:52px; height:1px; background:var(--gold); margin:0 auto 20px; animation:fadeUp 1s 0.4s ease both; }
+.hero-motto { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(13px,2.5vw,17px); color:var(--sand); margin-bottom:36px; animation:fadeUp 1s 0.45s ease both; }
+.hero-stats { display:inline-flex; border:1px solid var(--border); animation:fadeUp 1s 0.5s ease both; }
+.hero-stat { padding:clamp(10px,2vw,16px) clamp(18px,4vw,32px); border-right:1px solid var(--border); text-align:center; }
+.hero-stat:last-child { border-right:none; }
+.hero-stat-num { font-family:"Playfair Display",serif; font-size:clamp(1.4rem,4vw,1.8rem); font-weight:700; color:var(--gold); display:block; line-height:1; margin-bottom:4px; }
+.hero-stat-label { font-size:clamp(8px,1.6vw,10px); letter-spacing:0.16em; text-transform:uppercase; color:var(--sand); }
+.scroll-cue { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; }
+.scroll-cue span { font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--gray); }
+.scroll-line { width:1px; height:32px; background:linear-gradient(to bottom,var(--gold),transparent); animation:sp 1.8s infinite; }
+@keyframes sp { 0%{opacity:1;transform:scaleY(1);transform-origin:top} 100%{opacity:0;transform:scaleY(0);transform-origin:top} }
+
+/* PILLARS */
+.pillars { display:grid; grid-template-columns:repeat(3,1fr); border-bottom:1px solid var(--border); }
+@media(max-width:600px){ .pillars{grid-template-columns:1fr;} }
+.pillar { padding:clamp(36px,6vw,60px) clamp(24px,4vw,44px); border-right:1px solid var(--border); text-align:center; position:relative; overflow:hidden; transition:background 0.3s; }
+.pillar:last-child { border-right:none; }
+.pillar::after { content:""; position:absolute; bottom:0;left:0;right:0; height:2px; background:var(--gold); transform:scaleX(0); transition:transform 0.3s; }
+.pillar:hover::after { transform:scaleX(1); }
+.pillar:hover { background:rgba(184,134,11,0.04); }
+.pillar-roman { font-family:"Playfair Display",serif; font-size:clamp(2rem,5vw,3rem); font-weight:700; color:rgba(184,134,11,0.16); line-height:1; margin-bottom:6px; }
+.pillar-title { font-family:"Cormorant Garamond",serif; font-size:clamp(16px,3vw,22px); color:var(--gold); margin-bottom:10px; }
+.pillar-text { font-family:"Cormorant Garamond",serif; font-size:clamp(14px,2.5vw,16px); color:var(--sand); line-height:1.8; }
+
+/* WELCOME */
+.welcome { padding:clamp(48px,8vw,88px) clamp(16px,5vw,80px); display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,6vw,72px); align-items:center; border-bottom:1px solid var(--border); }
+@media(max-width:700px){ .welcome{grid-template-columns:1fr;} }
+.welcome-text .section-title { margin-bottom:8px; }
+.welcome-text .body-text { margin-top:16px; margin-bottom:12px; }
+.photo-frame { position:relative; width:100%; aspect-ratio:4/3; overflow:hidden; border:1px solid var(--border); }
+.photo-frame img { width:100%; height:100%; object-fit:cover; object-position:center 20%; }
+.photo-caption { position:absolute; bottom:0;left:0;right:0; background:linear-gradient(transparent,rgba(0,0,0,0.82)); padding:28px 18px 14px; font-size:clamp(9px,1.8vw,11px); letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); }
+</style>
+</head>
+<body>
+<div id="nav-inject"></div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img class="hero-logo" src="assets/logo.png" alt="Pi Kappa Chapter Logo">
+    <p class="hero-eyebrow">Alpha Phi Alpha Fraternity, Inc.</p>
+    <h1 class="hero-title">Pi Kappa Chapter</h1>
+    <p class="hero-sub">The HollyWOOD Chapter</p>
+    <div class="hero-divider"></div>
+    <p class="hero-motto">&ldquo;First of All, Servants of All, We Shall Transcend All&rdquo;</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">1906</span><span class="hero-stat-label">Alpha Founded</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">1984</span><span class="hero-stat-label">Pi Kappa Est.</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">CSUN</span><span class="hero-stat-label">Cal State Northridge</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<section class="pillars">
+  <div class="pillar"><div class="pillar-roman">I</div><div class="pillar-title">Scholarship</div><p class="pillar-text">Upholding the highest academic standards, both on campus and in everything we do as brothers of Alpha.</p></div>
+  <div class="pillar"><div class="pillar-roman">II</div><div class="pillar-title">Brotherhood</div><p class="pillar-text">Bonds built on trust, accountability, and a shared commitment to excellence that last a lifetime.</p></div>
+  <div class="pillar"><div class="pillar-roman">III</div><div class="pillar-title">Service</div><p class="pillar-text">Answering the call to uplift our community and the African diaspora with action, not just words.</p></div>
+</section>
+
+<section class="welcome">
+  <div class="welcome-text">
+    <span class="eyebrow">Welcome</span>
+    <h2 class="section-title">The HollyWOOD Chapter</h2>
+    <div class="gold-bar"></div>
+    <p class="body-text">Greetings and welcome to the official website of Alpha Phi Alpha Fraternity, Inc., Pi Kappa Chapter &mdash; proudly seated at California State University, Northridge. Founded in 1984, Pi Kappa Chapter has spent four decades building leaders, serving our community, and upholding the legacy of the greatest fraternity in the world.</p>
+    <p class="body-text">We are proud to call the greater Hollywood and San Fernando Valley community home, and we remain committed to the charge set forth by our seven founders.</p>
+    <a class="btn-gold" href="chapter.html">Meet the Brothers</a>
+    <a class="btn-outline" href="about.html">Our History</a>
+  </div>
+  <div class="photo-frame">
+    <img src="assets/anniversary.jpg" alt="Pi Kappa Chapter 40th Anniversary">
+    <div class="photo-caption">Pi Kappa Chapter &mdash; 40th Anniversary, 2024</div>
+  </div>
+</section>
+
+<div id="footer-inject"></div>
+
+<script src="assets/components.js"></script>
+<script>
+  document.getElementById('nav-inject').innerHTML = getNav('index.html');
+  document.getElementById('footer-inject').innerHTML = getFooter();
+  // Mobile nav
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-mobile').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
