@@ -4,6 +4,7 @@ function getNav(activePage) {
     {href:'index.html', label:'Home'},
     {href:'about.html', label:'About Alpha'},
     {href:'chapter.html', label:'Pi Kappa'},
+    {href:'gallery.html', label:'Gallery'},
     {href:'memoriam.html', label:'In Memoriam'},
     {href:'service.html', label:'Service'},
     {href:'contact.html', label:'Contact'},
@@ -44,6 +45,7 @@ function getFooter() {
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Alpha</a></li>
       <li><a href="chapter.html">Pi Kappa</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="memoriam.html">In Memoriam</a></li>
     </ul>
   </div>
