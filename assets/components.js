@@ -3,10 +3,9 @@ function getNav(activePage) {
   const pages = [
     {href:'index.html', label:'Home'},
     {href:'about.html', label:'About Alpha'},
-    {href:'chapter.html', label:'Pi Kappa'},
-    {href:'gallery.html', label:'Gallery'},
-    {href:'memoriam.html', label:'In Memoriam'},
+    {href:'chapter.html', label:'Pi Kappa History'},
     {href:'service.html', label:'Service'},
+    {href:'gallery.html', label:'Gallery'},
     {href:'contact.html', label:'Contact'},
   ];
   const links = pages.map(p =>
@@ -44,21 +43,15 @@ function getFooter() {
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Alpha</a></li>
-      <li><a href="chapter.html">Pi Kappa</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="memoriam.html">In Memoriam</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h4>Chapter</h4>
-    <ul class="footer-links">
+      <li><a href="chapter.html">Pi Kappa History</a></li>
       <li><a href="service.html">Service</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
     </ul>
   </div>
   <div class="footer-col">
     <h4>Connect</h4>
     <ul class="footer-links">
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="https://www.instagram.com/csunalphas/" target="_blank">Instagram</a></li>
       <li><a href="https://apa1906.net" target="_blank">apa1906.net</a></li>
     </ul>
