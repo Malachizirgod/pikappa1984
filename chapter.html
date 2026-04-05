@@ -17,31 +17,47 @@
 .charter-grid {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border);
-  margin-top: 24px;
+  gap: 14px;
+  margin-top: 36px;
 }
 
 .charter-row {
   display: flex;
+  gap: 14px;
+  justify-content: center;
 }
 
 .charter-card {
   flex: 1;
-  padding: clamp(16px,3vw,24px) clamp(12px,2vw,16px);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(16px,2.5vw,28px) clamp(10px,1.5vw,16px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  position: relative;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
 
-.charter-row .charter-card:last-child {
-  border-right: none;
+.charter-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 24px; height: 2px;
+  background: var(--gold);
 }
 
-.charter-card:hover { background: rgba(184,134,11,0.06); }
+.charter-card:hover {
+  background: rgba(184,134,11,0.06);
+  border-color: rgba(184,134,11,0.45);
+  transform: translateY(-3px);
+}
 
 .charter-name {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(14px,2.5vw,17px);
+  font-size: clamp(13px,1.8vw,15px);
   font-weight: 700;
   color: var(--gold);
   line-height: 1.25;
@@ -49,17 +65,24 @@
 }
 
 .charter-chapter {
-  font-size: clamp(9px,1.8vw,11px);
+  font-size: clamp(8px,1.2vw,10px);
   font-weight: 700;
   color: var(--white);
   letter-spacing: 0.04em;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .charter-season {
-  font-size: clamp(9px,1.8vw,10px);
-  color: var(--gray);
-  letter-spacing: 0.06em;
+  font-size: clamp(8px,1.1vw,9px);
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .charter-row { flex-wrap: wrap; }
+  .charter-card { flex: 1 1 calc(50% - 14px); }
 }
 
 /* LINEAGE SECTION */
