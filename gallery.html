@@ -36,6 +36,9 @@
   gap:2px;
   padding:clamp(16px,3vw,32px) clamp(12px,3vw,40px) clamp(40px,6vw,72px);
 }
+@media (max-width:600px) {
+  .gallery-grid { grid-template-columns:repeat(2,1fr); }
+}
 
 .gallery-item {
   position:relative; overflow:hidden; aspect-ratio:4/3;
