@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="assets/logo.png" type="image/png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Pi Kappa Chapter</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -52,11 +53,13 @@ textarea.form-input { min-height:100px; resize:vertical; }
   </div>
   <div class="contact-form">
     <div class="form-title">Contact Pi Kappa</div>
-    <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" type="text" placeholder="Your Name"></div>
-    <div class="form-group"><label class="form-label">School Email *</label><input class="form-input" type="email" placeholder="your@my.csun.edu"></div>
-    <div class="form-group"><label class="form-label">Subject</label><input class="form-input" type="text" placeholder="Event inquiry, collaboration, etc."></div>
-    <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Your message..."></textarea></div>
-    <button class="btn-gold" style="width:100%;text-align:center;padding:13px">Send Message</button>
+    <form id="contact-form">
+    <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" type="text" id="f-name" placeholder="Your Name" required></div>
+    <div class="form-group"><label class="form-label">School Email *</label><input class="form-input" type="email" id="f-email" placeholder="your@my.csun.edu" required></div>
+    <div class="form-group"><label class="form-label">Subject</label><input class="form-input" type="text" id="f-subject" placeholder="Event inquiry, collaboration, etc."></div>
+    <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" id="f-message" placeholder="Your message..."></textarea></div>
+    <button type="submit" class="btn-gold" style="width:100%;text-align:center;padding:13px">Send Message</button>
+    </form>
     <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--border)">
       <span class="eyebrow" style="margin-bottom:8px">Direct Contact</span>
       <p class="body-text" style="font-size:14px">&#128231; <a href="mailto:pikappachapter1906@gmail.com" style="color:var(--gold);text-decoration:none;">pikappachapter1906@gmail.com</a></p>
@@ -72,6 +75,16 @@ textarea.form-input { min-height:100px; resize:vertical; }
   document.getElementById('nav-inject').innerHTML = getNav('contact.html');
   document.getElementById('footer-inject').innerHTML = getFooter();
   document.getElementById('nav-toggle').addEventListener('click',()=>document.getElementById('nav-mobile').classList.toggle('open'));
+
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('f-name').value;
+    const email   = document.getElementById('f-email').value;
+    const subject = document.getElementById('f-subject').value || 'Pi Kappa Website Inquiry';
+    const message = document.getElementById('f-message').value;
+    const body    = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.location.href = `mailto:pikappachapter1906@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 </script>
 </body>
 </html>
