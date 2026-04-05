@@ -15,17 +15,26 @@
 }
 
 .charter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--border);
   margin-top: 24px;
 }
 
+.charter-row {
+  display: flex;
+}
+
 .charter-card {
+  flex: 1;
   padding: clamp(16px,3vw,24px) clamp(12px,2vw,16px);
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   transition: background 0.2s;
+}
+
+.charter-row .charter-card:last-child {
+  border-right: none;
 }
 
 .charter-card:hover { background: rgba(184,134,11,0.06); }
@@ -416,19 +425,28 @@
   <h2 class="section-title">The Charter Members</h2>
   <div class="gold-bar"></div>
   <div class="charter-grid">
-    <div class="charter-card"><div class="charter-name">Usher Barnum Jr</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Fall 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Wil Bryant Jr</div><div class="charter-chapter">Alpha Delta &ndash; USC</div><div class="charter-season">Fall 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Jimmy Chambers</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1982</div></div>
-    <div class="charter-card"><div class="charter-name">Stanley Germany</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
-    <div class="charter-card"><div class="charter-name">George Griffin</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Desmond Gumbs</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1982</div></div>
-    <div class="charter-card"><div class="charter-name">Todd Henry</div><div class="charter-chapter">Omicron Eta &ndash;</div><div class="charter-season">Fall 1984</div></div>
-    <div class="charter-card"><div class="charter-name">James Key</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Jeff Hudson</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Craig Little</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Carl Louisville</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Fall 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Lance Roberts</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Fall 1983</div></div>
-    <div class="charter-card"><div class="charter-name">Vince Ziboh</div><div class="charter-chapter">Iota Upsilon &ndash;</div><div class="charter-season">Spring 1984</div></div>
+    <!-- Row 1: 4 -->
+    <div class="charter-row">
+      <div class="charter-card"><div class="charter-name">Usher Barnum Jr</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Fall 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Wil Bryant Jr</div><div class="charter-chapter">Alpha Delta &ndash; USC</div><div class="charter-season">Fall 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Jimmy Chambers</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1982</div></div>
+      <div class="charter-card"><div class="charter-name">Stanley Germany</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
+    </div>
+    <!-- Row 2: 5 -->
+    <div class="charter-row">
+      <div class="charter-card"><div class="charter-name">George Griffin</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Desmond Gumbs</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1982</div></div>
+      <div class="charter-card"><div class="charter-name">Todd Henry</div><div class="charter-chapter">Omicron Eta &ndash;</div><div class="charter-season">Fall 1984</div></div>
+      <div class="charter-card"><div class="charter-name">James Key</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Jeff Hudson</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
+    </div>
+    <!-- Row 3: 4 -->
+    <div class="charter-row">
+      <div class="charter-card"><div class="charter-name">Craig Little</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Spring 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Carl Louisville</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Fall 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Lance Roberts</div><div class="charter-chapter">Gamma Xi &ndash; UCLA</div><div class="charter-season">Fall 1983</div></div>
+      <div class="charter-card"><div class="charter-name">Vince Ziboh</div><div class="charter-chapter">Iota Upsilon &ndash;</div><div class="charter-season">Spring 1984</div></div>
+    </div>
   </div>
 </div>
 

@@ -18,12 +18,64 @@
 .founding-label { font-size:clamp(9px,1.8vw,11px); letter-spacing:0.2em; text-transform:uppercase; color:var(--sand); margin-top:5px; }
 
 .sec { padding:clamp(40px,7vw,72px) clamp(16px,5vw,80px); border-bottom:1px solid var(--border); }
-.jewels-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); border:1px solid var(--border); margin-top:24px; }
-.jewel-card { padding:clamp(16px,3vw,26px) 14px; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background 0.2s; }
-.jewel-card:hover { background:rgba(184,134,11,0.06); }
-.jewel-initial { font-family:"Playfair Display",serif; font-size:clamp(1.4rem,3vw,1.8rem); font-weight:700; color:var(--gold); margin-bottom:6px; }
-.jewel-name { font-size:clamp(9px,1.8vw,11px); font-weight:700; margin-bottom:3px; line-height:1.3; }
-.jewel-desc { font-size:clamp(8px,1.6vw,10px); color:var(--gray); }
+.jewels-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+.jewel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(24px,4vw,40px) clamp(12px,2vw,20px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative;
+}
+.jewel-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 32px; height: 2px;
+  background: var(--gold);
+}
+.jewel-card:hover {
+  background: rgba(184,134,11,0.06);
+  border-color: rgba(184,134,11,0.45);
+  transform: translateY(-3px);
+}
+.jewel-initial {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem,4vw,3rem);
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+.jewel-name {
+  font-size: clamp(10px,1.6vw,12px);
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+.jewel-desc {
+  font-size: clamp(9px,1.4vw,10px);
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+@media (max-width: 768px) {
+  .jewels-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 480px) {
+  .jewels-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 .notable-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); border:1px solid var(--border); margin-top:24px; }
 .notable-item { padding:clamp(18px,3vw,28px) 16px; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background 0.2s; }
