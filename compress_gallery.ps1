@@ -12,7 +12,7 @@ if (-not (Test-Path $backupPath)) {
 }
 
 $extensions = @("*.jpg","*.jpeg","*.JPG","*.JPEG","*.png","*.PNG")
-$files = $extensions | ForEach-Object { Get-ChildItem -Path $galleryPath -Filter $_ } | Sort-Object Name
+$files = $extensions | ForEach-Object { Get-ChildItem -Path $galleryPath -Filter $_ -Recurse } | Sort-Object Name
 
 $encoder = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq "image/jpeg" }
 $encoderParams = New-Object System.Drawing.Imaging.EncoderParameters(1)
@@ -23,7 +23,10 @@ $i = 0
 
 foreach ($file in $files) {
     $i++
-    $backupDest = Join-Path $backupPath $file.Name
+    $relativePath = $file.FullName.Substring($galleryPath.Length + 1)
+    $backupDest = Join-Path $backupPath $relativePath
+    $backupDir = Split-Path $backupDest -Parent
+    if (-not (Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir -Force | Out-Null }
 
     if (Test-Path $backupDest) {
         Write-Host "[$i/$total] Skipping $($file.Name) - already processed"
