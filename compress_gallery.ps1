@@ -1,15 +1,9 @@
 Add-Type -AssemblyName System.Drawing
 
 $galleryPath = "$PSScriptRoot\Gallery"
-$backupPath  = "$PSScriptRoot\Gallery_originals"
 $maxWidth    = 1200
 $maxHeight   = 1200
 $jpegQuality = 80
-
-if (-not (Test-Path $backupPath)) {
-    New-Item -ItemType Directory -Path $backupPath | Out-Null
-    Write-Host "Created backup folder: Gallery_originals"
-}
 
 $extensions = @("*.jpg","*.jpeg","*.JPG","*.JPEG","*.png","*.PNG")
 $files = $extensions | ForEach-Object { Get-ChildItem -Path $galleryPath -Filter $_ -Recurse } | Sort-Object Name
@@ -23,17 +17,8 @@ $i = 0
 
 foreach ($file in $files) {
     $i++
-    $relativePath = $file.FullName.Substring($galleryPath.Length + 1)
-    $backupDest = Join-Path $backupPath $relativePath
-    $backupDir = Split-Path $backupDest -Parent
-    if (-not (Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir -Force | Out-Null }
-
-    if (Test-Path $backupDest) {
-        Write-Host "[$i/$total] Skipping $($file.Name) - already processed"
-        continue
-    }
-
     try {
+        $oldSize = [math]::Round($file.Length / 1KB)
         $img   = [System.Drawing.Image]::FromFile($file.FullName)
         $origW = $img.Width
         $origH = $img.Height
@@ -48,8 +33,6 @@ foreach ($file in $files) {
             $newH = [int]($origH * $ratio)
         }
 
-        Copy-Item $file.FullName $backupDest
-
         $bitmap = New-Object System.Drawing.Bitmap($newW, $newH)
         $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
         $graphics.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
@@ -57,17 +40,21 @@ foreach ($file in $files) {
         $graphics.Dispose()
         $img.Dispose()
 
-        $bitmap.Save($file.FullName, $encoder, $encoderParams)
+        # Save to temp file first, then replace original
+        $tmpFile = $file.FullName + ".tmp"
+        $bitmap.Save($tmpFile, $encoder, $encoderParams)
         $bitmap.Dispose()
 
+        Remove-Item $file.FullName -Force
+        Rename-Item $tmpFile $file.FullName
+
         $newSize = [math]::Round((Get-Item $file.FullName).Length / 1KB)
-        $oldSize = [math]::Round((Get-Item $backupDest).Length / 1MB, 1)
-        Write-Host "[$i/$total] $($file.Name): ${oldSize}MB -> ${newSize}KB"
+        Write-Host "[$i/$total] $($file.Name): ${oldSize}KB -> ${newSize}KB"
 
     } catch {
         Write-Host "[$i/$total] ERROR on $($file.Name): $_"
-        if (Test-Path $backupDest) {
-            Copy-Item $backupDest $file.FullName -Force
+        if (Test-Path ($file.FullName + ".tmp")) {
+            Remove-Item ($file.FullName + ".tmp") -Force
         }
     }
 }
@@ -77,4 +64,3 @@ $totalAfter = [math]::Round(($files | ForEach-Object { (Get-Item $_.FullName).Le
 Write-Host ""
 Write-Host "Done! $total images processed."
 Write-Host "Total gallery size after: ${totalAfter}MB"
-Write-Host "Originals saved in: Gallery_originals"
